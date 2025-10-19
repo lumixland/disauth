@@ -29,7 +29,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build package
         run: pnpm build
@@ -58,9 +58,10 @@ jobs:
 
       - name: Publish to npm
         if: steps.npm.outputs.published == 'false'
-        run: pnpm publish --access public --no-git-checks
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
 
       - name: Check for existing GitHub release
         id: release
