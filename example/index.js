@@ -17,7 +17,7 @@ const disauthClient = new Client({
   clientId,
   clientSecret,
   redirectUri,
-  scopes: ["identify", "email"],
+  scopes: ["identify", "guilds"],
 });
 
 app.get("/login", (_req, res) => {
@@ -29,7 +29,12 @@ app.get("/callback", async (req, res) => {
   const code = req.query.code;
   const tokens = await disauthClient.exchangeCode(code);
   const user = await disauthClient.getUser(tokens.access_token);
-  res.json({ user, tokens });
+  const guilds = await disauthClient.api(
+    "/users/@me/guilds",
+    tokens.access_token,
+  );
+
+  res.json({ user, tokens, guilds });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
