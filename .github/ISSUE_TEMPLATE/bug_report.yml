@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a problem or regression in dauth
+description: Report a problem or regression in disauth
 labels: [bug]
 body:
   - type: markdown
@@ -34,8 +34,8 @@ body:
   - type: input
     id: version
     attributes:
-      label: dauth version
-      description: Run `npm ls dauth` or share the version in your package.json.
+      label: disauth version
+      description: Run `npm ls disauth` or share the version in your package.json.
       placeholder: 1.0.0
     validations:
       required: true

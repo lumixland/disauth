@@ -1,5 +1,5 @@
 {
-  "name": "dauth",
+  "name": "disauth",
   "version": "1.0.0",
   "description": "Discord authentication library for Node.js applications using OAuth2.",
   "main": "distribution/index.js",
@@ -25,11 +25,11 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lumixland/dauth"
+    "url": "git+https://github.com/lumixland/disauth"
   },
-  "homepage": "https://github.com/lumixland/dauth#readme",
+  "homepage": "https://github.com/lumixland/disauth#readme",
   "bugs": {
-    "url": "https://github.com/lumixland/dauth/issues"
+    "url": "https://github.com/lumixland/disauth/issues"
   },
   "dependencies": {
     "undici": "^7.16.0"

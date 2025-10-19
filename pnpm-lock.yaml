@@ -24,7 +24,7 @@ importers:
 
   example:
     dependencies:
-      dauth:
+      disauth:
         specifier: workspace:*
         version: link:..
       dotenv:

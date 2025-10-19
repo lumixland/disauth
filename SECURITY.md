@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Security fixes are applied to the latest release of `dauth`. Please update to the newest version to receive patches.
+Security fixes are applied to the latest release of `disauth`. Please update to the newest version to receive patches.
 
 ## Reporting a Vulnerability
 

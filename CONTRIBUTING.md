@@ -1,4 +1,4 @@
-# Contributing to dauth
+# Contributing to disauth
 
 We welcome contributions of all sizes, from typo fixes to new features. This document outlines the expectations and workflows that help us keep the project healthy.
 
@@ -40,4 +40,4 @@ Before submitting a pull request, make sure that:
 - Include reproduction steps, expected and actual behavior, and environment details.
 - Be respectful and follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
-Thanks for helping make dauth better!
+Thanks for helping make disauth better!

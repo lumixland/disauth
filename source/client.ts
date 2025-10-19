@@ -59,7 +59,7 @@ export class Client {
         ? DISCORD_TOKEN_REVOKE_URL
         : `${trimmedApiBase}/oauth2/token/revoke`;
     this.userAgent =
-      config.userAgent ?? "dauth (https://www.npmjs.com/package/dauth)";
+      config.userAgent ?? "disauth (https://www.npmjs.com/package/disauth)";
     this.defaultPrompt = config.defaultPrompt ?? "consent";
     this.requestTimeoutMs = config.requestTimeoutMs;
   }
@@ -68,10 +68,8 @@ export class Client {
    * Generate an authorization URL for the configured application.
    */
   generateAuthUrl(state?: string, prompt?: DiscordPrompt): string;
-  /**
-   * Generate an authorization URL with advanced options.
-   */
   generateAuthUrl(options: OAuthAuthorizeOptions): string;
+
   generateAuthUrl(
     stateOrOptions?: string | OAuthAuthorizeOptions,
     prompt: DiscordPrompt = this.defaultPrompt,

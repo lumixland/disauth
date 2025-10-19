@@ -1,6 +1,6 @@
-# dauth
+# Disauth
 
-Modern Discord OAuth made simple. `dauth` wraps the Discord OAuth2 and REST APIs with safe defaults, PKCE helpers, and rich typings so you can add login flows to bots, dashboards, and tooling faster.
+Modern Discord OAuth made simple. `disauth` wraps the Discord OAuth2 and REST APIs with safe defaults, PKCE helpers, and rich typings so you can add login flows to bots, dashboards, and tooling faster.
 
 ## Features
 
@@ -13,19 +13,19 @@ Modern Discord OAuth made simple. `dauth` wraps the Discord OAuth2 and REST APIs
 ## Installation
 
 ```bash
-pnpm add dauth
+pnpm add disauth
 # or
-npm install dauth
+npm install disauth
 # or
-yarn add dauth
+yarn add disauth
 # or
-bun add dauth
+bun add disauth
 ```
 
 ## Quick Start
 
 ```ts
-import { Client } from "dauth";
+import { Client } from "disauth";
 
 const client = new Client({
   clientId: process.env.DISCORD_CLIENT_ID!,
@@ -49,7 +49,7 @@ const user = await client.getUser(access_token);
 PKCE is pre-baked: generate a verifier/challenge pair on the client, send the challenge with the authorization URL, and later pass the verifier when exchanging the code.
 
 ```ts
-import { Client, generatePkcePair } from "dauth";
+import { Client, generatePkcePair } from "disauth";
 
 const pkce = generatePkcePair();
 
@@ -90,7 +90,7 @@ await client.revokeToken(refresh_token, { tokenTypeHint: "refresh_token" });
 Errors thrown by the client extend `DiscordHttpError`. OAuth-specific issues raise `DiscordOAuthError` with the raw payload attached.
 
 ```ts
-import { DiscordOAuthError } from "dauth";
+import { DiscordOAuthError } from "disauth";
 
 try {
   await client.exchangeCode(code);

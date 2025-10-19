@@ -1,11 +1,11 @@
 name: Feature request
-description: Suggest an idea or enhancement for dauth
+description: Suggest an idea or enhancement for disauth
 labels: [enhancement]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for suggesting an improvement! Help us understand how this change makes dauth better for everyone.
+        Thanks for suggesting an improvement! Help us understand how this change makes disauth better for everyone.
   - type: textarea
     id: summary
     attributes:
