@@ -1,0 +1,62 @@
+name: Bug report
+description: Report a problem or regression in dauth
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please provide as much detail as possible so we can reproduce the problem.
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: What went wrong? What did you expect to happen?
+      placeholder: When I...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Share a minimal snippet or step-by-step instructions that lead to the issue.
+      placeholder: |
+        1. Go to ...
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and stack traces
+      description: Include relevant logs, stack traces, or screenshots if available.
+      render: shell
+  - type: input
+    id: version
+    attributes:
+      label: dauth version
+      description: Run `npm ls dauth` or share the version in your package.json.
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      description: Run `node --version`.
+      placeholder: v20.11.1
+  - type: dropdown
+    id: package_manager
+    attributes:
+      label: Package manager
+      options:
+        - pnpm
+        - npm
+        - yarn
+        - bun
+        - other
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else we should know?

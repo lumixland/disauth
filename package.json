@@ -1,9 +1,13 @@
 {
   "name": "dauth",
   "version": "1.0.0",
-  "description": "Discord authentication library for Deno and Node.js",
+  "description": "Discord authentication library for Node.js applications using OAuth2.",
   "main": "distribution/index.js",
   "types": "distribution/index.d.ts",
+  "files": [
+    "distribution",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "format": "prettier --write .",
@@ -13,12 +17,19 @@
     "discord",
     "authentication",
     "oauth2",
-    "deno",
     "nodejs",
     "library"
   ],
   "author": "Lumix OSS Team",
   "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumixland/dauth"
+  },
+  "homepage": "https://github.com/lumixland/dauth#readme",
+  "bugs": {
+    "url": "https://github.com/lumixland/dauth/issues"
+  },
   "dependencies": {
     "undici": "^7.16.0"
   },
