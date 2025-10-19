@@ -1,6 +1,6 @@
 import "dotenv/config";
-import express from 'express';
-import { Client } from 'dauth';
+import express from "express";
+import { Client } from "dauth";
 
 const app = express();
 const port = process.env.PORT || 3000;

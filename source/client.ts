@@ -43,7 +43,10 @@ export class Client {
   constructor(private config: OAuthConfig) {
     this.scopes = this.normalizeScopes(config.scopes);
     const oauthBase = this.getOauthBase(config.oauthBaseUrl);
-    const trimmedApiBase = (config.apiBaseUrl ?? DISCORD_API).replace(/\/$/, "");
+    const trimmedApiBase = (config.apiBaseUrl ?? DISCORD_API).replace(
+      /\/$/,
+      "",
+    );
 
     this.apiBaseUrl = trimmedApiBase;
     this.oauthAuthorizeUrl = `${oauthBase}/oauth2/authorize`;
@@ -121,7 +124,10 @@ export class Client {
   /**
    * Exchange an authorization code for tokens. Pass a PKCE code verifier when used with PKCE.
    */
-  async exchangeCode(code: string, codeVerifier?: string): Promise<TokenResponse> {
+  async exchangeCode(
+    code: string,
+    codeVerifier?: string,
+  ): Promise<TokenResponse> {
     const data = new URLSearchParams({
       client_id: this.config.clientId,
       grant_type: "authorization_code",
@@ -139,7 +145,9 @@ export class Client {
   /**
    * Exchange client credentials for an application access token.
    */
-  async exchangeClientCredentials(scopes?: DiscordScope[]): Promise<TokenResponse> {
+  async exchangeClientCredentials(
+    scopes?: DiscordScope[],
+  ): Promise<TokenResponse> {
     const clientSecret = this.requireClientSecret("Client credentials flow");
     const resolvedScopes = scopes ? this.normalizeScopes(scopes) : this.scopes;
 
@@ -193,7 +201,10 @@ export class Client {
   /**
    * Revoke an access or refresh token.
    */
-  async revokeToken(token: string, options: RevokeTokenOptions = {}): Promise<void> {
+  async revokeToken(
+    token: string,
+    options: RevokeTokenOptions = {},
+  ): Promise<void> {
     const clientSecret = this.requireClientSecret("Token revocation");
     const data = new URLSearchParams({
       client_id: this.config.clientId,
@@ -220,7 +231,11 @@ export class Client {
   /**
    * Execute a generic REST request against the Discord API.
    */
-  async api<T>(path: string, accessToken: string, init: RequestOptions = {}): Promise<T> {
+  async api<T>(
+    path: string,
+    accessToken: string,
+    init: RequestOptions = {},
+  ): Promise<T> {
     const url = this.resolveApiUrl(path);
 
     return this.execute<T>(url, {
@@ -261,11 +276,12 @@ export class Client {
       const method = normalized.method ?? "GET";
 
       if (treatAsOAuth) {
-        const payload: OAuthErrorPayload =
-          (parsed as OAuthErrorPayload | undefined) ?? {
-            error: "unknown_error",
-            error_description: raw || undefined,
-          };
+        const payload: OAuthErrorPayload = (parsed as
+          | OAuthErrorPayload
+          | undefined) ?? {
+          error: "unknown_error",
+          error_description: raw || undefined,
+        };
 
         throw new DiscordOAuthError(response.statusCode, url, method, payload);
       }
@@ -338,9 +354,7 @@ export class Client {
     );
 
     if (invalid.length)
-      throw new Error(
-        `Invalid Discord OAuth scope(s): ${invalid.join(", ")}`,
-      );
+      throw new Error(`Invalid Discord OAuth scope(s): ${invalid.join(", ")}`);
 
     return [...new Set(candidate)];
   }

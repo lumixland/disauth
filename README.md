@@ -3,6 +3,7 @@
 Modern Discord OAuth made simple. `dauth` wraps the Discord OAuth2 and REST APIs with safe defaults, PKCE helpers, and rich typings so you can add login flows to bots, dashboards, and tooling faster.
 
 ## Features
+
 - OAuth2 Authorization Code, PKCE, Refresh, and Client Credentials flows
 - Helpers for fetching `/users/@me`, guilds, and linked connections
 - Configurable base URLs for Discord API proxies
@@ -27,10 +28,10 @@ bun add dauth
 import { Client } from "dauth";
 
 const client = new Client({
-	clientId: process.env.DISCORD_CLIENT_ID!,
-	clientSecret: process.env.DISCORD_CLIENT_SECRET!,
-	redirectUri: "https://your-app.dev/oauth/callback",
-	scopes: ["identify", "email"],
+  clientId: process.env.DISCORD_CLIENT_ID!,
+  clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+  redirectUri: "https://your-app.dev/oauth/callback",
+  scopes: ["identify", "email"],
 });
 
 // 1. Redirect users to Discord
@@ -53,9 +54,9 @@ import { Client, generatePkcePair } from "dauth";
 const pkce = generatePkcePair();
 
 const authUrl = client.generateAuthUrl({
-	state: "csrf-token",
-	codeChallenge: pkce.challenge,
-	codeChallengeMethod: pkce.method,
+  state: "csrf-token",
+  codeChallenge: pkce.challenge,
+  codeChallengeMethod: pkce.method,
 });
 
 // Later in the callback route
@@ -65,7 +66,9 @@ const tokens = await client.exchangeCode(code, pkce.verifier);
 ## Client Credentials Flow
 
 ```ts
-const tokens = await client.exchangeClientCredentials(["applications.commands"]);
+const tokens = await client.exchangeClientCredentials([
+  "applications.commands",
+]);
 ```
 
 ## Generic REST Helper
@@ -90,11 +93,11 @@ Errors thrown by the client extend `DiscordHttpError`. OAuth-specific issues rai
 import { DiscordOAuthError } from "dauth";
 
 try {
-	await client.exchangeCode(code);
+  await client.exchangeCode(code);
 } catch (error) {
-	if (error instanceof DiscordOAuthError) {
-		console.error(error.error, error.description);
-	}
+  if (error instanceof DiscordOAuthError) {
+    console.error(error.error, error.description);
+  }
 }
 ```
 
