@@ -1,4 +1,4 @@
-# Disauth
+# disauth
 
 Modern Discord OAuth made simple. `disauth` wraps the Discord OAuth2 and REST APIs with safe defaults, PKCE helpers, and rich typings so you can add login flows to bots, dashboards, and tooling faster.
 
