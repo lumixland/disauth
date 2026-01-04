@@ -1,6 +1,6 @@
 {
   "name": "disauth",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Discord authentication library for Node.js applications using OAuth2.",
   "main": "distribution/index.js",
   "types": "distribution/index.d.ts",
